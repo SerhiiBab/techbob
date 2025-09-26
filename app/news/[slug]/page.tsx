@@ -1,13 +1,26 @@
-// app/news/[slug]/page.tsx
 import { gql } from "graphql-request";
 import client from '@/lib/graphql-client';
-import { notFound } from 'next/navigation'; // <-- вот сюда
+import { notFound } from 'next/navigation';
 
-export const revalidate = 60; // ISR: пересборка страницы каждые 60 секунд
+export const revalidate = 60;
 
 interface NewsPageProps {
   params: {
     slug: string;
+  };
+}
+
+// Тип данных, который вернёт GraphQL
+interface Post {
+  title: string;
+  content: string;
+  date: string;
+  slug: string;
+}
+
+interface GraphQLResponse {
+  posts: {
+    nodes: Post[];
   };
 }
 
@@ -25,10 +38,10 @@ export default async function NewsPage({ params }: NewsPageProps) {
     }
   `;
 
-  const data = await client.request(query, { slug: params.slug });
+  // Явно указываем тип
+  const data = await client.request<GraphQLResponse>(query, { slug: params.slug });
   const post = data.posts?.nodes?.[0];
 
-  // Если пост не найден — показать 404
   if (!post) {
     return notFound();
   }
