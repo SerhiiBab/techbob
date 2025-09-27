@@ -26,7 +26,7 @@ export default async function Home() {
                   />
                 </div>
               )}
-
+              <div className="text-left">
               {/* заголовок */}
               <Link
                 href={`/news/${post.slug}`}
@@ -34,14 +34,16 @@ export default async function Home() {
               >
                 <span className="font-medium">{post.title}</span>
                 <br />
-                <span className="text-sm text-gray-500">
-                  {new Date(post.date).toLocaleDateString("de-DE", {
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric"
-})}
-                </span>
+                
               </Link>
+              <span className="text-sm text-gray-500">
+                  {new Date(post.date).toLocaleDateString("de-DE", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                })}
+                </span>
+                </div>
             </li>
           ))}
         </ul>
