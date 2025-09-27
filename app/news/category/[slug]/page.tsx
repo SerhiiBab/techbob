@@ -11,7 +11,11 @@ interface Post {
   title: string;
   slug: string;
   date: string;
-  image?: string;
+  featuredImage?: {
+    node: {
+      sourceUrl: string;
+    };
+  };
 }
 
 interface GraphQLResponse {
