@@ -1,14 +1,14 @@
 "use client";
 
+import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
-
 
 export default function GoogleAnalytics() {
   const pathname = usePathname();
@@ -23,20 +23,21 @@ export default function GoogleAnalytics() {
 
   return (
     <>
-      <script
-        async
+      {/* Загрузка GA скрипта */}
+      <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-J4DEVP6ZB7"
-      ></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
+        strategy="afterInteractive"
+      />
+      
+      {/* Инициализация GA */}
+      <Script id="ga-init" strategy="afterInteractive">
+        {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-J4DEVP6ZB7');
-        `,
-        }}
-      />
+        `}
+      </Script>
     </>
   );
 }
