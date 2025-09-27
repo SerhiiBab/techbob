@@ -7,13 +7,13 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { title: "Home", href: "/" },
-    { title: "News", href: "/news" },
-    { title: "Reviews", href: "/reviews" },
-    { title: "Guides", href: "/guides" },
-    { title: "About", href: "/about" },
-    { title: "Contact", href: "/contact" },
-  ];
+  { title: "IT & Tech", href: "/news/category/it" },
+  { title: "KI", href: "/news/category/ki" },
+  { title: "Wissenschaft", href: "/news/category/wissenschaft" },
+  { title: "Apple", href: "/news/category/apple" },
+  { title: "Hardware", href: "/news/category/hardware" },
+  { title: "Apps", href: "/news/category/apps" },
+];
 
   return (
     <header className="bg-gray-900 text-white shadow-md">
