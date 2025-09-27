@@ -5,3 +5,18 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cms.techbob.de",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
+
