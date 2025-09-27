@@ -71,7 +71,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               {post.title}
             </a>
             <time className="text-sm text-gray-500">
-              {new Date(post.date).toLocaleDateString("de-DE")}
+               {new Date(post.date).toLocaleDateString("de-DE", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                })}
             </time>
           </li>
         ))}
