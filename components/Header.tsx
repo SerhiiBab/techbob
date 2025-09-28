@@ -19,9 +19,10 @@ export default function Header() {
     <header className="bg-gray-900 text-white shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
         {/* Лого */}
-        <Link href="/" className="text-2xl font-bold">
-          TechBOB
-        </Link>
+        {/* Лого */}
+  <Link href="/" className="flex items-center">
+    <img src="/techbob-logo.png" alt="TechBOB Logo" className="max-h-6 w-auto" />
+  </Link>
 
         {/* Меню для десктопа */}
         <nav className="hidden md:flex space-x-6">
