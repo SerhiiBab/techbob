@@ -21,7 +21,7 @@ export default function Header() {
         {/* Лого */}
         {/* Лого */}
   <Link href="/" className="flex items-center">
-    <img src="/techbob-logo.png" alt="TechBOB Logo" className="max-h-6 w-auto" />
+    <img src="/techbob_logo.png" alt="TechBOB Logo" className="max-h-6 w-auto" />
   </Link>
 
         {/* Меню для десктопа */}
