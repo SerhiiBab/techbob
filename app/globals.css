@@ -24,3 +24,24 @@ body {
   color: var(--foreground);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
+/* глобально или в компоненте */
+.prose h1.wp-block-heading {
+  @apply text-3xl font-bold mt-4 mb-2;
+}
+
+.prose h2.wp-block-heading {
+  @apply text-2xl font-semibold mt-4 mb-2;
+}
+
+.prose h3.wp-block-heading {
+  @apply text-xl font-semibold mt-3 mb-2;
+}
+
+.prose ul.wp-block-list {
+  @apply list-disc pl-6;
+}
+
+.prose ol.wp-block-list {
+  @apply list-decimal pl-6;
+}
