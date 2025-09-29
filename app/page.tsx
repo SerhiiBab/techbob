@@ -12,9 +12,9 @@ export default async function Home() {
     <div className="container mx-auto text-center">
       <div className="p-6">
         <h1 className="text-3xl font-bold mb-4">TechBOB News</h1>
-        <ul className="space-y-4 flex flex-col md:flex-row md:flex-wrap gap-3">
+        <ul className="space-y-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
           {posts.map((post: Post) => (
-            <li key={post.id} className="flex items-center space-x-4 mb-0 md:w-[49%]">
+            <li key={post.id} className="flex items-center space-x-4 rounded-[5px] bg-[#1e1e1e] pr-[5px] mb-0 md:w-[49%]">
               {/* картинка */}
               {post.image && (
                 <div className="w-20 h-20 relative flex-shrink-0">
