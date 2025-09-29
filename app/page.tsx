@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <div className="container mx-auto text-center">
       <div className="p-6">
-        <h1 className="text-3xl font-bold mb-4">TechBOB News</h1>
+        <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#82BCFF]">Aktuell</h1>
         <ul className="space-y-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
           {posts.map((post: Post) => (
             <li key={post.id} className="flex items-center space-x-4 rounded-[5px] bg-[#1e1e1e] pr-[5px] mb-0 md:w-[49%]">
@@ -30,7 +30,7 @@ export default async function Home() {
               {/* заголовок */}
               <Link
                 href={`/news/${post.slug}`}
-                className="font-medium hover:underline text-left"
+                className="font-medium hover:text-[#82BCFF] text-left"
               >
                 <span className="font-medium">{post.title}</span>
                 <br />

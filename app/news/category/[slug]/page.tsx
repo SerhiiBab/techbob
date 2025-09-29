@@ -66,7 +66,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             )}
             <a
               href={`/news/${post.slug}`}
-              className="font-medium hover:underline text-left w-full"
+              className="font-medium hover:text-[#82BCFF] text-left w-full"
             >
               {post.title}
             </a>

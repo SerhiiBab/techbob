@@ -94,13 +94,13 @@ export default async function NewsPage({ params }: NewsPageProps) {
 
       {/* Sidebar */}
       <aside className="md:col-span-1">
-        <h2 className="text-xl font-semibold mb-4">Neueste Beiträge</h2>
+        <h2 className="text-xl font-semibold mb-4 text-[#82BCFF]">Neueste Beiträge</h2>
         <ul className="space-y-3">
           {latestPosts.map((p) => (
             <li key={p.slug}>
               <Link
                 href={`/news/${p.slug}`}
-                className="block hover:underline text-500"
+                className="block hover:text-[#82BCFF] text-500"
               >
                 {p.title}
               </Link>

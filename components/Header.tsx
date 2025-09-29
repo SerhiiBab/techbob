@@ -30,7 +30,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-gray-300 font-medium"
+              className="hover:text-[#82BCFF] font-medium"
             >
               {item.title}
             </Link>
@@ -56,7 +56,7 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block hover:text-gray-300 font-medium"
+                  className="block hover:text-grey-600 font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.title}
