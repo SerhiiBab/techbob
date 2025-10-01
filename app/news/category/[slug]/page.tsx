@@ -65,7 +65,7 @@ const categoryName = data.category?.name || params.slug;
   }
 
   return (
-    <div className="container mx-auto text-center p-6">
+    <div className="container mx-auto text-center p-6 bg-[#153850] p-[10px] rounded-[10px]">
       <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#82BCFF]">
   Alles zu {categoryName}
       </h1>
