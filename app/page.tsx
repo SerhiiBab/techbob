@@ -12,8 +12,8 @@ export default async function Home() {
   return (
     <div className="container mx-auto p-4 text-center">
       {/* --- Aktuell --- */}
-      <section className="mb-10 bg-[#57444f] p-[10px] rounded-[10px]">
-        <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#82BCFF]">
+      <section className="mb-10 bg-[#00758c] p-[10px] rounded-[10px]">
+        <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#fff]">
           Aktuell
         </h1>
         <ul className="space-y-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
@@ -70,7 +70,7 @@ export default async function Home() {
       {/* --- Разделы по категориям --- */}
       {categories.map((category) => (
         <section key={category.id} className="mb-10 bg-[#153850] p-[10px] rounded-[10px]">
-          <h2 className="text-2xl font-bold text-[20px] text-[#82BCFF] mb-4 text-left">
+          <h2 className="text-2xl font-bold text-[20px] text-[#fff] mb-4 text-left">
             <Link
               href={`/category/${category.slug}`}
               className="hover:underline"
