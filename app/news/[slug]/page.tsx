@@ -72,7 +72,7 @@ export default async function NewsPage({ params }: NewsPageProps) {
       {/* Основной контент */}
       <article className="md:col-span-2">
         {/* Увеличиваем просмотры */}
-        <ViewCounter postId={post.id} />  {/* Показывает и увеличивает просмотры */}
+        
         <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
 
         <div className="flex items-center gap-4 mb-2">
@@ -83,9 +83,6 @@ export default async function NewsPage({ params }: NewsPageProps) {
               year: "numeric",
             })}
           </time>
-          <span className="text-sm text-gray-400">
-            👁 {post.postViews ?? 0} Aufrufe
-          </span>
         </div>
 
         {post.featuredImage?.node?.sourceUrl && (
