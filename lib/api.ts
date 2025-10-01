@@ -71,3 +71,93 @@ export async function getPosts(): Promise<Post[]> {
     })) || []
   );
 }
+
+const CATEGORIES_WITH_POSTS_QUERY = `
+  query GetCategoriesWithPosts {
+    categories {
+      nodes {
+        id
+        name
+        slug
+        posts(first: 5) {   # можно ограничить количество постов
+          nodes {
+            id
+            title
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            categories {
+              nodes {
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  posts: Post[];
+}
+
+interface GraphQLCategoriesResponse {
+  categories: {
+    nodes: {
+      id: string;
+      name: string;
+      slug: string;
+      posts: {
+        nodes: {
+          id: string;
+          title: string;
+          slug: string;
+          date: string;
+          featuredImage?: {
+            node?: {
+              sourceUrl: string;
+            };
+          };
+          categories: {
+            nodes: {
+              name: string;
+              slug: string;
+            }[];
+          };
+        }[];
+      };
+    }[];
+  };
+}
+
+export async function getCategoriesWithPosts(): Promise<Category[]> {
+  const data = await client.request<GraphQLCategoriesResponse>(
+    CATEGORIES_WITH_POSTS_QUERY
+  );
+
+  return (
+    data.categories?.nodes.map((cat) => ({
+      id: cat.id,
+      name: cat.name,
+      slug: cat.slug,
+      posts:
+        cat.posts.nodes.map((post) => ({
+          id: post.id,
+          title: post.title,
+          slug: post.slug,
+          date: post.date,
+          image: post.featuredImage?.node?.sourceUrl || null,
+          category: post.categories.nodes[0] || undefined,
+        })) || [],
+    })) || []
+  );
+}
