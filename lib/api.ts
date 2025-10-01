@@ -6,6 +6,10 @@ export interface Post {
   slug: string;
   date: string;
   image?: string | null;
+  category?: {
+    name: string;
+    slug: string;
+  };
 }
 
 const POSTS_QUERY = `
@@ -19,6 +23,12 @@ const POSTS_QUERY = `
         featuredImage {
           node {
             sourceUrl
+          }
+        }
+        categories {
+          nodes {
+            name
+            slug
           }
         }
       }
@@ -38,6 +48,12 @@ interface GraphQLResponse {
           sourceUrl: string;
         };
       };
+      categories: {
+        nodes: {
+          name: string;
+          slug: string;
+        }[];
+      };
     }[];
   };
 }
@@ -51,7 +67,7 @@ export async function getPosts(): Promise<Post[]> {
       slug: post.slug,
       date: post.date,
       image: post.featuredImage?.node?.sourceUrl || null,
+      category: post.categories.nodes[0] || undefined, // берем первую категорию
     })) || []
   );
 }
-

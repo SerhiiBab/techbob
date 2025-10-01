@@ -2,7 +2,6 @@ import { gql } from "graphql-request";
 import client from "@/lib/graphql-client";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import ViewCounter from "./ViewCounter"; // клиентский компонент
 
 export const revalidate = 60;
 
@@ -76,7 +75,7 @@ export default async function NewsPage({ params }: NewsPageProps) {
         <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
 
         <div className="flex items-center gap-4 mb-2">
-          <time className="text-sm text-gray-500">
+          <time className="text-[12px] text-[#919191]">
             {new Date(post.date).toLocaleDateString("de-DE", {
               day: "2-digit",
               month: "2-digit",
@@ -113,7 +112,7 @@ export default async function NewsPage({ params }: NewsPageProps) {
               >
                 {p.title}
               </Link>
-              <time className="block text-xs text-gray-500">
+              <time className="block text-[12px] text-[#919191]">
                 {new Date(p.date).toLocaleDateString("de-DE", {
                   day: "2-digit",
                   month: "2-digit",

@@ -71,7 +71,7 @@ const categoryName = data.category?.name || params.slug;
       </h1>
       <ul className="space-y-4 flex flex-col md:flex-row md:flex-wrap gap-3 flex-wrap justify-between">
         {posts.map((post) => (
-          <li key={post.slug} className="flex items-center space-x-4 rounded-[5px] bg-[#1e1e1e] pr-[5px] mb-0 md:w-[49%]">
+          <li key={post.slug} className="flex items-center space-x-4 rounded-[5px] bg-[#1e1e1e] py-1.25 px-2 mb-0 md:w-[49%]">
             {post.featuredImage?.node?.sourceUrl && (
               <div className="w-20 h-20 relative flex-shrink-0">
               <img
@@ -89,7 +89,7 @@ const categoryName = data.category?.name || params.slug;
             >
               {post.title}
             </a>
-             <time className="text-sm text-gray-500">
+             <time className="text-[12px] text-[#919191]">
                {new Date(post.date).toLocaleDateString("de-DE", {
                     day: "2-digit",
                     month: "2-digit",
