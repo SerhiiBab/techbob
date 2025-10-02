@@ -69,7 +69,7 @@ export default async function NewsPage({ params }: NewsPageProps) {
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 p-6 text-left">
       {/* Основной контент */}
-      <article className="md:col-span-2">
+      <article className="md:col-span-2 pt-[80px]">
         {/* Увеличиваем просмотры */}
         
         <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
@@ -99,7 +99,7 @@ export default async function NewsPage({ params }: NewsPageProps) {
       </article>
 
       {/* Sidebar */}
-      <aside className="md:col-span-1">
+      <aside className="md:col-span-1 md:pt-[80px]">
         <h2 className="text-xl font-semibold mb-4 text-[#82BCFF]">
           Neueste Beiträge
         </h2>

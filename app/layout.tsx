@@ -34,6 +34,13 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <div
+    className="fixed top-0 left-0 w-full h-screen bg-cover bg-center -z-10"
+    style={{
+      backgroundImage:
+        "url('https://cms.techbob.de/wp-content/uploads/2025/10/background.webp')",
+    }}
+  />
         <Header />
         <main>{children}</main>
         <Footer />

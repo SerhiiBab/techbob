@@ -65,13 +65,13 @@ const categoryName = data.category?.name || params.slug;
   }
 
   return (
-    <div className="container mx-auto text-center p-6 bg-[#153850] p-[10px] rounded-[10px]">
-      <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#82BCFF]">
+    <div className="container mx-auto text-center p-6  p-[10px] rounded-[10px]">
+      <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#fff] pt-[90px]">
   Alles zu {categoryName}
       </h1>
       <ul className="space-y-4 flex flex-col md:flex-row md:flex-wrap gap-3 flex-wrap justify-between">
         {posts.map((post) => (
-          <li key={post.slug} className="flex items-center space-x-4 rounded-[5px] bg-[#1e1e1e] py-1.25 px-2 mb-0 md:w-[49%]">
+          <li key={post.slug} className="flex items-center space-x-4 rounded-[5px] bg-[#1e1e1e] py-1.25 px-2 mb-0 md:w-[49%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[14px]">
             {post.featuredImage?.node?.sourceUrl && (
               <div className="w-20 h-20 relative flex-shrink-0">
               <img
