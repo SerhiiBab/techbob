@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <div className="container mx-auto p-4 text-center">
       {/* --- Aktuell --- */}
-      <section className="mb-10 p-[10px] rounded-[10px] mt-[80px]">
+      <section className="mb-10 md:p-[10px] rounded-[10px] mt-[80px]">
         <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#fff]">
           Aktuell
         </h1>
@@ -69,7 +69,7 @@ export default async function Home() {
 
       {/* --- Разделы по категориям --- */}
       {categories.map((category) => (
-        <section key={category.id} className="mb-10 p-[10px] rounded-[10px]">
+        <section key={category.id} className="mb-10 md:p-[10px] rounded-[10px]">
           <h2 className="text-2xl font-bold text-[20px] text-[#fff] mb-4 text-left">
             <Link
               href={`/news/category/${category.slug}`}
