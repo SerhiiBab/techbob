@@ -1,8 +1,26 @@
 import { NextResponse } from "next/server";
 import client from "@/lib/graphql-client";
 
-async function fetchAllPosts() {
-  let posts: any[] = [];
+// Типы для GraphQL ответа
+interface PostNode {
+  slug: string;
+  modified: string;
+}
+
+interface PageInfo {
+  hasNextPage: boolean;
+  endCursor: string | null;
+}
+
+interface PostsResponse {
+  posts: {
+    pageInfo: PageInfo;
+    nodes: PostNode[];
+  };
+}
+
+async function fetchAllPosts(): Promise<PostNode[]> {
+  let posts: PostNode[] = [];
   let hasNextPage = true;
   let endCursor: string | null = null;
 
@@ -22,7 +40,7 @@ async function fetchAllPosts() {
       }
     `;
 
-    const data = await client.request(query, { after: endCursor });
+    const data: PostsResponse = await client.request(query, { after: endCursor });
 
     posts = [...posts, ...data.posts.nodes];
     hasNextPage = data.posts.pageInfo.hasNextPage;
@@ -38,7 +56,7 @@ export async function GET() {
 
     const urls = posts
       .map(
-        (post: any) => `
+        (post) => `
       <url>
         <loc>https://techbob.de/news/${post.slug}</loc>
         <lastmod>${new Date(post.modified).toISOString()}</lastmod>
