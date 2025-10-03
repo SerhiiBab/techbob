@@ -19,7 +19,10 @@ export const metadata: Metadata = {
   title: "TechBOB – News & Trends zu IT, KI, Wissenschaft und Cybersecurity",
   description:
     "TechBOB bietet aktuelle Nachrichten, Analysen und Trends aus den Bereichen IT, Künstliche Intelligenz, Wissenschaft und Cybersecurity.",
-  openGraph: {
+  alternates: {
+    canonical: "https://techbob.de/",
+  },
+    openGraph: {
     title: "TechBOB – News & Trends zu IT, KI, Wissenschaft und Cybersecurity",
     description:
       "TechBOB bietet aktuelle Nachrichten, Analysen und Trends aus den Bereichen IT, Künstliche Intelligenz, Wissenschaft und Cybersecurity.",

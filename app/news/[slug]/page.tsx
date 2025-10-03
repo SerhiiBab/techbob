@@ -26,6 +26,66 @@ interface Post {
   };
 }
 
+// --- SEO metadata ---
+export async function generateMetadata({ params }: NewsPageProps) {
+  const query = gql`
+    query GetPostSEO($slug: String!) {
+      posts(where: { name: $slug }) {
+        nodes {
+          title
+          slug
+          featuredImage {
+            node {
+              sourceUrl
+              altText
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const data = await client.request<{ posts: { nodes: Post[] } }>(query, {
+    slug: params.slug,
+  });
+
+  const post = data.posts?.nodes?.[0];
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: post.title,
+    description: post.title, // можешь заменить на excerpt, если есть
+    alternates: {
+      canonical: `https://techbob.de/news/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.title,
+      url: `https://techbob.de/news/${post.slug}`,
+      images: post.featuredImage?.node?.sourceUrl
+        ? [
+            {
+              url: post.featuredImage.node.sourceUrl,
+              alt: post.featuredImage.node.altText || post.title,
+            },
+          ]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.title,
+      images: post.featuredImage?.node?.sourceUrl
+        ? [post.featuredImage.node.sourceUrl]
+        : [],
+    },
+  };
+}
+
+
 export default async function NewsPage({ params }: NewsPageProps) {
   const query = gql`
     query GetPostAndLatest($slug: String!) {
