@@ -1,0 +1,37 @@
+import { NextResponse } from "next/server";
+
+// Замените URL на ваш WP REST API
+const WP_API_URL = "https://cms.techbob.de/wp-json/wp/v2/posts?per_page=100";
+
+export async function GET() {
+  try {
+    const res = await fetch(WP_API_URL);
+    const posts = await res.json();
+
+    // Формируем URL для каждой статьи
+    const urls = posts
+      .map(
+        (post: any) => `
+      <url>
+        <loc>https://techbob.de/posts/${post.slug}</loc>
+        <lastmod>${new Date(post.modified).toISOString()}</lastmod>
+      </url>`
+      )
+      .join("");
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://techbob.de/</loc>
+  </url>
+  ${urls}
+</urlset>`;
+
+    return new NextResponse(xml, {
+      headers: { "Content-Type": "application/xml" },
+    });
+  } catch (error) {
+    console.error("Sitemap generation error:", error);
+    return new NextResponse("Error generating sitemap", { status: 500 });
+  }
+}
