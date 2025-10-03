@@ -10,9 +10,7 @@ export default function Header() {
   { title: "IT & Tech", href: "/news/category/it" },
   { title: "KI", href: "/news/category/ki" },
   { title: "Wissenschaft", href: "/news/category/wissenschaft" },
-  { title: "Apple", href: "/news/category/apple" },
-  { title: "Hardware", href: "/news/category/hardware" },
-  { title: "Apps", href: "/news/category/apps" },
+  { title: "Cybersecurity", href: "/news/category/cybersecurity" },
 ];
 
   return (

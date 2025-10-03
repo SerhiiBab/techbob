@@ -38,7 +38,7 @@ export default async function Home() {
                 {/* категория */}
                 {post.category && (
                   <Link
-                    href={`/category/${post.category.slug}`}
+                    href={`/news/category/${post.category.slug}`}
                     className="text-sm text-[#82BCFF] hover:underline"
                   >
                     {post.category.name}
@@ -98,7 +98,7 @@ export default async function Home() {
                   {/* категория */}
                   {post.category && (
                     <Link
-                      href={`/category/${post.category.slug}`}
+                      href={`/news/category/${post.category.slug}`}
                       className="text-sm text-[#82BCFF] hover:underline"
                     >
                       {post.category.name}
