@@ -132,9 +132,9 @@ export default async function NewsPage({ params }: NewsPageProps) {
       <article className="md:col-span-2 pt-[80px]">
         {/* Увеличиваем просмотры */}
         
-        <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
+        <h1 className="text-3xl font-bold mb-2 bg-[#00000042] p-[10px]">{post.title}</h1>
 
-        <div className="flex items-center gap-4 mb-2">
+        <div className="flex items-center gap-4 mb-2 pl-[10px]">
           <time className="text-[12px] text-[#919191]">
             {new Date(post.date).toLocaleDateString("de-DE", {
               day: "2-digit",
@@ -153,17 +153,17 @@ export default async function NewsPage({ params }: NewsPageProps) {
         )}
 
         <div
-          className="prose max-w-none"
+          className="prose max-w-none bg-[#00000042] p-[10px]"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </article>
 
       {/* Sidebar */}
       <aside className="md:col-span-1 md:pt-[80px]">
-        <h2 className="text-xl font-semibold mb-4 text-[#82BCFF]">
+        <h2 className="text-xl font-semibold mb-4 text-[#82BCFF] bg-[#00000042] p-[10px]">
           Neueste Beiträge
         </h2>
-        <ul className="space-y-3">
+        <ul className="space-y-3 bg-[#00000042] p-[10px]">
           {latestPosts.map((p) => (
             <li key={p.slug}>
               <Link
