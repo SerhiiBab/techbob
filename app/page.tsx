@@ -17,7 +17,7 @@ export default async function Home() {
           Aktuell
         </h1>
         <ul className="space-y-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
-          {posts.map((post: Post) => (
+          {posts.slice(0, 8).map((post: Post) => (
             <li
               key={post.id}
               className="flex items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] mb-0 md:w-[49%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[14px]"
@@ -79,7 +79,7 @@ export default async function Home() {
             </Link>
           </h2>
           <ul className="flex flex-col md:flex-row md:flex-wrap gap-3">
-            {category.posts.map((post) => (
+            {category.posts.slice(0, 8).map((post) => (
               <li
                 key={post.id}
                 className="flex items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] md:w-[49%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[14px]"
