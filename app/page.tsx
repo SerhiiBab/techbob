@@ -10,7 +10,7 @@ export default async function Home() {
   const categories = await getCategoriesWithPosts();
 
   return (
-    <div className="container mx-auto p-4 text-center">
+    <div className="container mx-auto p-[10px] text-center">
       {/* --- Aktuell --- */}
       <section className="mb-10 md:p-[10px] rounded-[10px] mt-[80px]">
         <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#fff]">
