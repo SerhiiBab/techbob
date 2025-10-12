@@ -14,7 +14,6 @@ export async function GET() {
     <url>
       <loc>https://www.techbob.de/news/${post.slug}</loc>
       <lastmod>${post.modified}</lastmod>
-      <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
   `).join('');
@@ -23,7 +22,6 @@ export async function GET() {
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
       <loc>https://www.techbob.de/</loc>
-      <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
     ${urls}
