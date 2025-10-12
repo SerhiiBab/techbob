@@ -12,8 +12,8 @@ export async function GET() {
 
   const urls = posts.map((post) => `
     <url>
-      <loc>https://www.techbob.de/news/${post.slug}</loc>
       <lastmod>${post.modified}</lastmod>
+      <loc>https://www.techbob.de/news/${post.slug}</loc>
     </url>
   `).join('');
 
