@@ -11,8 +11,19 @@ export async function GET() {
   const posts: WPPost[] = await res.json();
 
   const urls = posts.map((post) => {
-    // Преобразуем дату в ISO 8601 с временной зоной UTC
-    const lastmod = new Date(post.modified).toISOString();
+    // Преобразуем дату в формат ISO 8601 с учётом часового пояса Берлина
+    const berlinTime = new Date(post.modified).toLocaleString('sv-SE', {
+      timeZone: 'Europe/Berlin',
+      hour12: false,
+    });
+
+    // Преобразуем в корректный ISO-формат (YYYY-MM-DDTHH:mm:ss+02:00)
+    const [datePart, timePart] = berlinTime.split(' ');
+    const offsetMinutes = new Date().getTimezoneOffset() * -1; // смещение локали (в минутах)
+    const offsetHours = Math.floor(offsetMinutes / 60);
+    const offset = `${offsetHours >= 0 ? '+' : '-'}${String(Math.abs(offsetHours)).padStart(2, '0')}:00`;
+
+    const lastmod = `${datePart}T${timePart}${offset}`;
 
     return `
       <url>
