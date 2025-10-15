@@ -16,11 +16,60 @@ export default async function Home() {
         <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#fff]">
           Aktuell
         </h1>
-        <ul className="space-y-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
-          {posts.slice(0, 8).map((post: Post) => (
+          <ul className="space-y-4 pb-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
+          {posts.slice(0, 3).map((post: Post) => (
             <li
               key={post.id}
-              className="flex items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] mb-0 md:w-[49%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[14px]"
+              className="flex flex-col items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] mb-0 md:w-[24%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[10px]"
+            >
+              {/* картинка */}
+              {post.image && (
+                <div className="w-20 h-20 relative flex-shrink-0">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover rounded"
+                  />
+                </div>
+              )}
+
+              <div className="text-left flex-1">
+                {/* категория */}
+                {post.category && (
+                  <Link
+                    href={`/news/category/${post.category.slug}`}
+                    className="text-sm text-[#82BCFF] hover:underline"
+                  >
+                    {post.category.name}
+                  </Link>
+                )}
+
+                {/* заголовок */}
+                <Link
+                  href={`/news/${post.slug}`}
+                  className="font-medium hover:text-[#82BCFF] block"
+                >
+                  {post.title}
+                </Link>
+
+                {/* дата */}
+                <span className="text-[12px] text-[#919191] block mt-1">
+                  {new Date(post.date).toLocaleDateString("de-DE", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                  })}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <ul className="space-y-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
+          {posts.slice(3,12).map((post: Post) => (
+            <li
+              key={post.id}
+              className="flex items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] mb-0 md:w-[49%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[10px]"
             >
               {/* картинка */}
               {post.image && (
@@ -82,7 +131,7 @@ export default async function Home() {
             {category.posts.slice(0, 8).map((post) => (
               <li
                 key={post.id}
-                className="flex items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] md:w-[49%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[14px]"
+                className="flex items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] md:w-[49%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[10px]"
               >
                 {post.image && (
                   <div className="w-20 h-20 relative flex-shrink-0">
