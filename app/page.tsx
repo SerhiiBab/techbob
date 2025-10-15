@@ -22,17 +22,7 @@ export default async function Home() {
               key={post.id}
               className="flex flex-col items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] mb-0 md:w-[24%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[10px]"
             >
-              {/* картинка */}
-              {post.image && (
-                <div className="w-20 h-20 relative flex-shrink-0">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover rounded"
-                  />
-                </div>
-              )}
+             
 
               <div className="text-left flex-1">
                 {/* категория */}
