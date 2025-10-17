@@ -69,7 +69,7 @@ export default async function Home() {
           ))}
         </ul>
         <ul className="space-y-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
-          {posts.slice(3,12).map((post: Post) => (
+          {posts.slice(3,13).map((post: Post) => (
             <li
               key={post.id}
               className="flex items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] mb-0 md:w-[49%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[10px]"
