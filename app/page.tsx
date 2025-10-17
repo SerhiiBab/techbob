@@ -10,21 +10,33 @@ export default async function Home() {
   const categories = await getCategoriesWithPosts();
 
   return (
-    <div className="container mx-auto p-[10px] text-center">
+    <div className="container mx-auto p-[5px] text-center">
       {/* --- Aktuell --- */}
-      <section className="mb-10 md:p-[10px] rounded-[10px] mt-[80px] bg-[linear-gradient(90deg,rgba(229,7,254,0.10)_0%,rgba(67,72,104,0.16)_25%,rgba(153,143,75,0.21)_54%,rgba(87,50,50,0.40)_100%)]">
+      <section className="mb-10 md:p-[10px] rounded-[10px] mt-[80px] md:bg-[linear-gradient(90deg,rgba(229,7,254,0.10)_0%,rgba(67,72,104,0.16)_25%,rgba(153,143,75,0.21)_54%,rgba(87,50,50,0.40)_100%)]">
         <h1 className="text-3xl font-bold mb-4 text-left text-[20px] text-[#fff]">
           Aktuell
         </h1>
           <ul className="space-y-4 pb-4 flex flex-col justify-between md:flex-row md:flex-wrap gap-3">
-          {posts.slice(0, 4).map((post: Post) => (
+          {posts.slice(0, 3).map((post: Post) => (
             <li
               key={post.id}
-              className="flex flex-col items-center space-x-4 rounded-[5px] bg-[#222222e6] py-[5px] px-[8px] mb-0 md:w-[32%] border border-dashed border-[hsla(0,0%,100%,0.3)] rounded-[10px]"
+              className="flex flex-col items-center space-x-4 rounded-[5px] py-[5px] px-[8px] mb-0 md:w-[32%] rounded-[10px]"
             >
-             
 
-              <div className="text-left flex-1">
+             {post.image && (
+      
+              <Link href={`/news/${post.slug}`} className="w-[100%] h-60 relative flex-shrink-0 md:w-[100%] md:h-70">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover rounded"
+                />
+              </Link>
+
+            )}
+
+              <div className="text-left flex-1 w-[98%]">
                 {/* категория */}
                 {post.category && (
                   <Link
@@ -38,7 +50,7 @@ export default async function Home() {
                 {/* заголовок */}
                 <Link
                   href={`/news/${post.slug}`}
-                  className="font-medium hover:text-[#82BCFF] block"
+                  className="text-[24px] leading-tight font-medium hover:text-[#82BCFF] block"
                 >
                   {post.title}
                 </Link>
@@ -52,6 +64,7 @@ export default async function Home() {
                   })}
                 </span>
               </div>
+
             </li>
           ))}
         </ul>

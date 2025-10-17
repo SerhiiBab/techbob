@@ -1,35 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import CookieConsent from "react-cookie-consent";
 
 export default function CookieConsentBanner() {
-  const [consentGiven, setConsentGiven] = useState(false);
-
-  useEffect(() => {
-    const consent = localStorage.getItem("mySiteCookieConsent");
-    if (consent === "true") {
-      setConsentGiven(true);
-    }
-  }, []);
-
-  const handleAccept = () => {
-    localStorage.setItem("mySiteCookieConsent", "true");
-    setConsentGiven(true);
-    // Здесь можно подключать, например, Google Analytics
-  };
-
-  if (consentGiven) return null;
-
   return (
     <CookieConsent
       location="bottom"
       buttonText="Akzeptieren"
+      declineButtonText="Ablehnen"
+      enableDeclineButton
       cookieName="mySiteCookieConsent"
-      style={{ background: "#2B373B" }}
+      style={{ background: "#2B373B", padding: "15px 20px" }}
       buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+      declineButtonStyle={{ color: "#fff", background: "#888", fontSize: "13px" }}
       expires={150}
-      onAccept={handleAccept}
+      onAccept={() => {
+        // Здесь можно подключать Google Analytics или другие сервисы
+        console.log("Cookies akzeptiert");
+      }}
+      onDecline={() => {
+        console.log("Cookies abgelehnt");
+        // Можно отключить трекеры
+      }}
     >
       Diese Website verwendet Cookies, um das Nutzererlebnis zu verbessern.
     </CookieConsent>

@@ -19,10 +19,10 @@ export default function Header() {
         {/* Лого */}
         {/* Лого */}
   <Link href="/" className="flex items-center md:flex md:items-center 
-  md:bg-[#222222e6] 
-  md:border md:border-dashed md:border-[hsla(0,0%,100%,0.3)] 
-  md:rounded-[14px] 
-  md:h-[50px] 
+  bg-[#222222e6] 
+  border border-dashed border-[hsla(0,0%,100%,0.3)] 
+  rounded-[14px] 
+  h-[50px] 
   md:mr-[3px] 
   md:p-[20px]">
     <svg width="200" height="70" viewBox="0 0 343 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,35 +59,50 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Бургер для мобильных */}
-        <button
-          className="md:hidden focus:outline-none"
+ {/* Бургер / крестик для мобильных */}
+ <button
+          className="md:hidden flex flex-col justify-between w-[30px] h-5 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
         >
-          <span className="block w-6 h-0.5 bg-white mb-1"></span>
-          <span className="block w-6 h-0.5 bg-white mb-1"></span>
-          <span className="block w-6 h-0.5 bg-white"></span>
+          <span
+            className={`block h-0.5 w-full bg-white transition-transform duration-300 ${
+              isOpen ? "rotate-45 translate-y-[10px]" : ""
+            }`}
+          ></span>
+          <span
+            className={`block h-0.5 w-full bg-white transition-opacity duration-300 ${
+              isOpen ? "opacity-0" : "opacity-100"
+            }`}
+          ></span>
+          <span
+            className={`block h-0.5 w-full bg-white transition-transform duration-300 ${
+              isOpen ? "-rotate-45 -translate-y-[8px]" : ""
+            }`}
+          ></span>
         </button>
       </div>
 
       {/* Меню для мобильных */}
-      {isOpen && (
-        <nav className="md:hidden bg-gray-800">
-          <ul className="flex flex-col space-y-2 p-4">
-            {menuItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block hover:text-grey-600 font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      <nav
+        className={`md:hidden bg-[#222] transition-all duration-300 overflow-hidden ${
+          isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col space-y-2 p-4">
+          {menuItems.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="block hover:text-[#DEF200] font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }
